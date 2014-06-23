@@ -1,0 +1,87 @@
+// 
+// List
+// ==============================
+
+
+
+
+// Toolbar
+// ------------------------------
+
+.item-toolbar {
+	.clearfix();
+	color: @gray-light;
+}
+
+
+// Toolbar lists
+
+.item-breadcrumbs,
+.item-toolbar-info {
+	.list-inline();
+
+	a {
+		.inline-align();
+		padding-bottom: @padding-base-vertical;
+		padding-top: @padding-base-vertical;
+	}
+}
+
+
+// Breadcrumbs
+
+.item-breadcrumbs {
+	float: left;
+}
+
+
+// Info
+
+.item-toolbar-info {
+	float: right;
+}
+
+
+// Search form
+
+.item-search {
+	display: none;
+}
+
+
+
+
+// Responsive
+// ------------------------------
+
+
+// handheld devices
+
+@media (max-width: @screen-xs-max) {
+	.item-toolbar-info {
+		.item-toolbar-id {
+			display: none;
+		}
+		.divider {
+			display: none;
+		}
+	}
+}
+
+
+// laptops, desktops
+
+@media (min-width: @screen-sm-min) {
+	.item-search {
+		float: left;
+	}
+}
+
+
+
+
+
+
+
+
+

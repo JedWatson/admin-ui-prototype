@@ -1,0 +1,133 @@
+//
+// Dropdown menus
+// --------------------------------------------------
+
+
+// Dropdown arrow/caret
+.caret {
+	border-top:   .3rem solid;
+	border-right: .3rem solid transparent;
+	border-left:  .3rem solid transparent;
+	display: inline-block;
+	height: 0;
+	// margin-left: .1em;
+	vertical-align: middle;
+	width: 0;
+}
+.caret-lg {
+	.caret();
+	border-top-width: .4rem;
+	border-right-width: .4rem;
+	border-left-width: .4rem;
+}
+
+// The dropdown wrapper (div)
+.dropdown {
+	position: relative;
+}
+.dropdown-inline {
+	.inline-align();
+}
+
+// Prevent the focus on the dropdown toggle when closing dropdowns
+.dropdown-toggle:focus {
+	outline: 0;
+}
+
+// The dropdown menu (ul)
+.dropdown-menu {
+	background-clip: padding-box;
+	background-color: white;
+	box-shadow: 0 2px 6px rgba(0,0,0,.2);
+	border: 1px solid rgba(0,0,0,.2); // use a border, rather than combined box-shadow, so the radius is the same as buttons
+	border-bottom-color: rgba(0,0,0,.3);
+	border-top-color: rgba(0,0,0,.1);
+	border-radius: @border-radius;
+	display: none; // none by default, but block on "open" of the menu
+	float: left;
+	font-size: @ui-fontsize;
+	line-height: 1;
+	list-style: none;
+	left: 0;
+	min-width: 160px;
+	padding: 5px 0;
+	position: absolute;
+	top: 100%;
+	margin: 2px 0 0; // override default ul
+	z-index: @zindex-dropdown;
+
+	// Dividers (basically an hr) within the dropdown
+	.divider {
+		background-color: @line-color;
+		height: 1px;
+		margin: @dropdown-link-padding-vertical 0;
+		overflow: hidden;
+	}
+
+	// Links within the dropdown menu
+	> li > a {
+		clear: both;
+		color: @text-color;
+		display: block;
+		font-weight: normal;
+		line-height: inherit;
+		padding: @dropdown-link-padding-vertical @dropdown-link-padding-horizontal;
+		white-space: nowrap; // prevent links from randomly breaking onto new lines
+	}
+}
+
+// Hover/Focus state
+.dropdown-menu > li > a {
+	&:hover,
+	&:focus {
+		background-color: @dropdown-link-hover-bg;
+		color: @dropdown-link-hover-color;
+		text-decoration: none;
+	}
+}
+
+// Open state for the dropdown
+.open {
+	// Show the menu
+	> .dropdown-menu {
+		display: block;
+	}
+
+	// Remove the outline when :focus is triggered
+	> a {
+		outline: 0;
+	}
+}
+
+// Menu positioning
+//
+// Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
+// menu with the parent.
+.dropdown-menu-right {
+	left: auto; // Reset the default from `.dropdown-menu`
+	right: 0;
+}
+// Force left
+.dropdown-menu-left {
+	left: 0;
+	right: auto;
+}
+
+// Dropdown section headers
+.dropdown-header {
+	color: @dropdown-header-color;
+	display: block;
+	font-size: .85em;
+	padding: @dropdown-link-padding-vertical @dropdown-link-padding-horizontal;
+}
+
+// Backdrop to catch body clicks on mobile, etc.
+.dropdown-backdrop {
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: (@zindex-dropdown - 10);
+}
+

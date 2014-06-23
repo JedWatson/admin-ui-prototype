@@ -1,0 +1,141 @@
+extends ../layouts/default
+
+block content
+	//- CREATE FORM
+	.list-create
+		.list-create-initial
+			button(type='button', data-toggle='modal', data-target='#modal-create').btn.btn-default
+				span.ion-plus
+				span Create User
+
+	
+	//- HEADER
+	//- Details of the current data set
+	<div class="list-header"><h1><span>892 Users</span><span class="text-muted"> sorted by&nbsp;</span><span class="dropdown list-sort-dropdown"><a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">name <b class="caret-lg"></b></a></span></h1></div>
+
+	
+	//- FILTER BAR
+	//- Manipulate the data set by searching, filtering, and sorting
+	.list-filterbar
+		.list-filterbar-left
+			.dropdown.dropdown-inline
+				button(type='button', title='Recent Searches', data-toggle='dropdown').btn.btn-default.mr-5
+					span.sr-only Recent Searches
+					span.ion-clock
+				ul.dropdown-menu
+					li.dropdown-header Recent Searches
+					li: a(href='javascript:;') Line item
+					li: a(href='javascript:;') Line item
+					li: a(href='javascript:;') Line item
+					li: a(href='javascript:;') Line item
+					li: a(href='javascript:;') Line item
+			form(method='post').list-filterbar-searchform
+				input(type='hidden' name='action' value='search.items')
+				input(type='search', placeholder='Search').field.field-lg
+				button(type='button').btn.btn-default.ml-5 Search
+				.dropdown.dropdown-inline.ml-5
+					button(type='button', data-toggle='dropdown').btn.btn-default Filter 
+						span.caret
+					ul.dropdown-menu
+						li: a(href='javascript:;') Line item
+						li: a(href='javascript:;') Line item
+						li: a(href='javascript:;') Line item
+						li: a(href='javascript:;') Line item
+						li.divider
+						li.dropdown-header Recent Searches
+						li: a(href='javascript:;') Line item
+		.list-filterbar-right
+			.list-filterbar-utilities
+				.dropdown.dropdown-inline.ml-5
+					button(type='button', data-toggle='dropdown').btn.btn-default Columns 
+						span.caret
+					ul.dropdown-menu.dropdown-menu-right
+						li: a(href='javascript:;') Line item
+						li: a(href='javascript:;') Line item
+						li: a(href='javascript:;') Line item
+						li: a(href='javascript:;') Line item
+						li.divider
+						li.dropdown-header Recent Searches
+						li: a(href='javascript:;') Line item
+				button(type='button').btn.btn-default.ml-5 Download
+	
+	
+	//- TOOLBAR
+	//- Edit and delete items
+	.list-toolbar
+		.list-managebar
+			button(type='button', data-toggle='modal', data-target='#modal-update').btn.btn-default
+				span.ion-edit
+				span Edit Selected
+			a(href='?delete=selected').btn.btn-default.js-confirm
+				span.ion-trash-a
+				span Delete Selected
+		<div class="list-pagination"><div class="count">Showing 101 to 150 of 892</div><ul class="pagination"><li><a href="/keystone/users/1">1</a></li><li><a href="/keystone/users/2">2</a></li><li class="active"><a href="/keystone/users/3">3</a></li><li><a href="/keystone/users/4">4</a></li><li><a href="/keystone/users/5">5</a></li><li><a href="/keystone/users/6">6</a></li><li><a href="/keystone/users/7">7</a></li><li><a href="/keystone/users/8">8</a></li><li><a href="/keystone/users/9">9</a></li><li><a href="/keystone/users/10">10</a></li><li><a href="/keystone/users/18">...</a></li></ul></div>
+	
+	
+	//- ITEMS LIST
+	//- Table of the current data set
+	.items-list-wrapper
+		table.items-list
+			colgroup
+				col(width=26)
+			thead
+				tr
+					th: label(title='Toggle all rows'): input(type='checkbox', name='head_checkbox', value=i)
+					th: a(href='javascript:;') Name
+					th: a(href='javascript:;') Email
+					th: a(href='javascript:;') Date
+					th: a(href='javascript:;') Boolean
+			tbody
+				each row, i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+					tr
+						td: label(title='Select this row'): input(type='checkbox', name='body_checkbox', value=i)
+						td: a(href='/item') William H. Macy
+						td: a(href='/item') will.macy@gmail.com
+						td: span 24 Oct 2015
+						td: span.ion-checkmark
+
+
+
+block modal
+	include ../includes/modal-create
+	#modal-update(tabindex="-1", role="dialog", aria-labelledby="updateItems", aria-hidden="true").modal
+		.modal-dialog
+			.modal-content
+				form(method='get', action='/list', autocomplete='off', novalidate)
+					input(type='hidden' name='action' value='update')
+					.modal-header
+						button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+						h3.modal-title Update Items
+					.modal-body
+						.dropdown.dropdown-inline
+							button(type='button', data-toggle='dropdown').btn.btn-default
+								//- span.ion-edit
+								span Select a field to edit 
+								span.caret
+							ul.dropdown-menu.update-field-select
+								li: a(href='javascript:;', data-value='name') Name
+								li: a(href='javascript:;', data-value='email') Email
+								li: a(href='javascript:;', data-value='date') Date
+								li: a(href='javascript:;', data-value='admin') Admin Access
+						.update-field-row
+							hr.line-dashed
+							.form-group.form-group-aligned
+								label.field-label (field name)
+								input(type='text', placeholder='').field.field-md
+					.modal-footer
+						button(type='submit', disabled).btn.btn-default.submit-button
+							span Update Users
+
+
+block js
+	script(src='/js/list.js')
+
+
+
+
+
+
+
+
+

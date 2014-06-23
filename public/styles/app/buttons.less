@@ -1,0 +1,163 @@
+//
+// Buttons
+// ==============================
+
+
+// Base styles
+// --------------------------------------------------
+
+.btn {
+	.box-sizing( border-box );
+	.button-size(@padding-base-vertical; @padding-base-horizontal; @ui-fontsize);
+	.user-select(none);
+	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+	border: 1px solid transparent;
+	color: @text-color;
+	cursor: pointer;
+	display: inline-block;
+	font-family: inherit;
+	// font-size: @ui-fontsize;
+	font-weight: inherit;
+	// line-height: @line-height-base;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+
+	&:hover,
+	&:focus {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	&:active,
+	&.active {
+		outline: 0;
+		background-image: none;
+		box-shadow: inset 0 1px 3px rgba(0,0,0,.125);
+	}
+
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		cursor: not-allowed;
+		pointer-events: none; // Future-proof disabling of clicks
+		opacity: .65;
+		box-shadow: none;
+	}
+}
+
+
+// Icons in buttons
+// --------------------------------------------------
+
+.btn > [class^="ion-"]:first-child:not(:only-child) {
+	margin-right: .75em;
+}
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-default {
+	.button-variant(@btn-default-color; @btn-default-bg; darken(@btn-default-bg, 10%));
+}
+.btn-primary {
+	.button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-bg);
+}
+.btn-create {
+	.button-variant(@btn-create-color; @btn-create-bg; @btn-create-bg);
+}
+.btn-warning {
+	.button-variant(@btn-warning-color; @btn-warning-bg; @btn-warning-bg);
+}
+.btn-danger {
+	.button-variant(@btn-danger-color; @btn-danger-bg; @btn-danger-bg);
+}
+
+
+// Link buttons
+// -------------------------
+
+// Make a button look and behave like a link
+.btn-link {
+	color: @link-color;
+	font-weight: normal;
+	cursor: pointer;
+	border-radius: 0;
+
+	&,
+	&:active,
+	&[disabled],
+	fieldset[disabled] & {
+		background-color: transparent;
+		box-shadow: none;
+	}
+	&,
+	&:hover,
+	&:focus,
+	&:active {
+		border-color: transparent;
+		box-shadow: none;
+	}
+	&:hover,
+	&:focus {
+		color: @link-hover-color;
+		text-decoration: underline;
+		background-color: transparent;
+	}
+	&[disabled],
+	fieldset[disabled] & {
+		&:hover,
+		&:focus {
+			color: @gray-light;
+			text-decoration: none;
+		}
+	}
+}
+
+
+// Cancel / Delete buttons
+
+.btn-ominous {
+	color: @gray-light;
+
+	&:hover,
+	&:focus {
+		color: @app-danger;
+	}
+}
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn-sm {
+	.button-size(@padding-sm-vertical; @padding-sm-horizontal; @font-size-sm);
+}
+.btn-xs {
+	.button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-sm);
+}
+
+
+// Block button
+// --------------------------------------------------
+
+.btn-block {
+	display: block;
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+	margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	&.btn-block {
+		width: 100%;
+	}
+}

@@ -1,0 +1,70 @@
+extends ../layouts/default
+
+block content
+	.item-toolbar.item-toolbar--header
+		ul.item-breadcrumbs
+			li: a(href='javascript:;').js-show-search-form: span.ion-search
+			li.divider &middot;
+			li: a(href='/list')
+				span.mr-5.ion-arrow-left-c
+				| Users
+		.item-search
+			form(method='get', action='/list')
+				input(type='search', name='search', placeholder='Search').field.field-lg
+				button(type='submit').btn.btn-default.ml-5 Search
+				button(type='button').btn.btn-link.btn-ominous.js-hide-search-form Cancel
+		ul.item-toolbar-info
+			li.item-toolbar-id id: 53a3d4f195d27f0000c6ecb9
+			li.divider &middot;
+			li: button(type='button', data-toggle='modal', data-target='#modal-create').btn.btn-link
+				span.mr-5.ion-plus
+				| New User
+	hr
+	h1 Admin User
+	form(method='post')
+		.form-group.form-group-aligned
+			label.field-label Username
+			input(type='text', value='William').field.field-sm
+			input(type='text', value='Macy').field.field-sm
+		.form-group.form-group-aligned
+			label.field-label Email
+			input(type='email', value='will.macy@gmail.com').field.field-lg
+		.form-group.form-group-aligned
+			label.field-label Password
+			button(type='button').btn.btn-default Change Password
+		hr.line-dashed
+		h2 Permissions
+		.form-group.form-group-aligned
+			label.field-label Can access keystone
+			input(type='checkbox')
+		hr
+		.item-toolbar.item-toolbar--footer
+			button(type='button').btn.btn-default Save Changes
+			button(type='button').btn.btn-link.btn-ominous.js-hide-create-form Cancel
+
+
+
+block modal
+	include ../includes/modal-create
+
+
+block js
+	script.
+		jQuery(function($) {
+
+			var breadcrumbs = $('.item-breadcrumbs'),
+				searchform = $('.item-search'),
+				showformbutton = $('.js-show-search-form'),
+				hideformbutton = $('.js-hide-search-form');
+
+			showformbutton.click(function() {
+				searchform.show().find('.field')[0].focus();
+				breadcrumbs.hide();
+			});
+
+			hideformbutton.click(function() {
+				searchform.hide();
+				breadcrumbs.show();
+			});
+
+		});

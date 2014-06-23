@@ -1,0 +1,61 @@
+include ../mixins/flash-messages
+
+doctype html
+html
+
+	//- HTML HEADER
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+		title= title || 'Admin UI Prototype'
+		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+
+		//- link(href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css", rel="stylesheet")
+		link(href="/styles/app.min.css", rel="stylesheet")
+
+		block css
+
+	//- HTML BODY
+	body
+
+		//- HEADER
+		nav.site-navbar.primary-navbar: ul.site-nav
+			li(class= section == 'manage' ? '' : null).site-nav-brand: a(href='/') Joss' Brand
+			li(class= section == 'list' ? 'active' : null): a(href='/list') List
+			li(class= section == 'item' ? 'active' : null): a(href='/item') Item
+			li: a(href='/list') Just
+			li: a(href='/item') For
+			li: a(href='/item') Appearance
+			li.right: a(href='/logout') Logout
+		if section == 'list' || section == 'item'
+			nav.site-navbar.secondary-navbar: ul.site-nav
+				li(class= section == 'manage' ? 'active' : null): a(href='/list') Posts
+				li(class= section == 'list' ? 'active' : null): a(href='/list') Post Categories
+				li: a(href='/list') Just
+				li: a(href='/item') For
+				li: a(href='/item') Appearance
+
+		//- BODY
+		.site-body: .container
+			+flash-messages(messages)
+			block content
+
+
+		//- FOOTER
+		.site-footer: .container
+			p Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.
+
+
+		//- MODALS
+		block modal
+
+		//- JAVASCRIPT
+
+		script(src='/js/lib/jquery/jquery-1.11.0.min.js')
+		script(src='/js/lib/bootstrap/dropdown.js')
+		script(src='/js/lib/bootstrap/modal.js')
+		script(src='/js/ui.js')
+		
+		block js

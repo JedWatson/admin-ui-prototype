@@ -1,0 +1,162 @@
+// 
+// List
+// ==============================
+
+
+// List Toolbar
+
+.list-toolbar {
+	.clearfix();
+	margin-bottom: 2em;
+}
+
+
+// Editing buttons
+
+.list-toolbar {
+
+	.btn {
+		margin-right: .5em;
+	}
+
+	
+	// toggle buttons
+
+	&.rows-selected {
+		.list-pagination {
+			display: none;
+		}
+		.list-managebar {
+			display: block;
+		}
+	}
+}
+// hide by default
+.list-managebar {
+	display: none;
+}
+
+
+
+
+// Create item form
+// ------------------------------
+
+.list-create {
+	border-bottom: 1px solid @line-color;
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+}
+
+.list-create-form {
+	display: none;
+}
+
+
+
+
+// Filter bar
+// ------------------------------
+
+.list-filterbar {
+	.clearfix();
+	margin-bottom: 2em;
+}
+
+
+// search form
+.list-filterbar-searchform {
+	.inline-align();
+}
+
+
+
+
+// List table
+// ------------------------------
+
+.items-list {
+	.table();
+	a {
+		color: @text-color;
+	}
+	tr > th,
+	tr > td {
+		padding: 0;
+	}
+	tr > th > a {
+		color: @gray-light;
+	}
+	a, label, span {
+		display: inline-block;
+		padding: @padding-base-vertical @padding-base-horizontal;
+	}
+	.row-selected > td {
+		background-color: @selected-row-bg;
+	}
+}
+
+
+
+
+// Responsive
+// ------------------------------
+
+
+// handheld devices
+
+@media (max-width: @screen-xs-max) {
+
+	// horizontal scrolling - only applies < 768px
+	.items-list-wrapper {
+		overflow-y: hidden;
+		overflow-x: scroll;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		-webkit-overflow-scrolling: touch;
+		width: 100%;
+	}
+
+	// tighten up spacing
+	.items-list {
+		table-layout: auto;
+		margin-bottom: 0;
+
+		// Ensure the content doesn't wrap
+		> thead,
+		> tbody,
+		> tfoot {
+			> tr {
+				> th,
+				> td {
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+
+	// filterbar
+	.list-filterbar-left {
+		margin-bottom: 1em;
+	}
+}
+
+
+// laptops, desktops
+
+@media (min-width: @screen-sm-min) {
+	.list-filterbar-left {
+		float: left;
+	}
+	.list-filterbar-right {
+		float: right;
+	}
+}
+
+
+
+
+
+
+
+
+

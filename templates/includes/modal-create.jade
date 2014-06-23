@@ -1,0 +1,18 @@
+#modal-create(tabindex="-1", role="dialog", aria-labelledby="createItem", aria-hidden="true").modal
+	.modal-dialog
+		.modal-content
+			form(method='post', action='/item', autocomplete='off', novalidate)
+				input(type='hidden' name='action' value='create')
+				.modal-header
+					button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+					h3.modal-title Create User
+				.modal-body
+					.form-group.form-group-aligned
+						label.field-label Username
+						input(type='text', placeholder='').field.field-md
+					.form-group.form-group-aligned
+						label.field-label Email
+						input(type='email', placeholder='').field.field-md
+				.modal-footer
+					button(type='submit').btn.btn-default Create
+					button(type='button', data-dismiss="modal").btn.btn-link.btn-ominous Cancel

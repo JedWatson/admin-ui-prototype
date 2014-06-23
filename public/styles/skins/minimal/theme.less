@@ -1,0 +1,261 @@
+//
+// Minimal Theme
+// ==============================
+
+
+
+
+/*
+	Font
+	------------------------------
+
+	A beautiful and light-weight font for our app
+	Thank you http://google.com/fonts & Paul D. Hunt
+*/
+
+@import "http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,300";
+
+
+
+// Headings
+// ------------------------------
+
+h1, .h1 { font-weight: 300; }
+h4, .h4 { color: @gray-light; margin-top: 0; text-transform: uppercase; }
+
+
+
+
+// Navigation
+// ------------------------------
+
+
+// Common
+
+.site-navbar {
+
+	// align first nav items to the left of the container
+	li:first-child > a {
+		padding-left: 0;
+	}
+	// align last nav items to the right of the container
+	.right:last-child > a {
+		padding-right: 0;
+	}
+}
+
+
+// Primary
+
+.primary-navbar {
+	padding-bottom: .5em;
+	padding-top: .5em;
+
+	// add a little divider between nav items
+	li {
+		position: relative;
+
+		&:before {
+			.translateY(-50%);
+			background-color: rgba(255, 255, 255, 0.2);
+			content: " ";
+			left: 0;
+			height: 1em;
+			position: absolute;
+			top: 50%;
+			width: 1px;
+			z-index: 1;
+		}
+	}
+
+	li > a {
+		border-radius: .2em;
+		position: relative;
+	}
+
+	// hide the active element's divider and mask the one to its right
+	.active {
+		box-shadow: 2px 0 0 @primary-navbar-bg; // this sits on top of the divider, masking it from view
+		z-index: 2;
+
+		&:before {
+			display: none;
+		}
+	}
+}
+.site-nav > .right:before,
+.site-nav-brand:before {
+	display: none;
+}
+
+.site-nav-brand > a {
+	// background-color: transparent !important;
+	font-weight: 600;
+}
+
+
+// Secondary
+
+.secondary-navbar {
+	font-size: .9em;
+
+	.active > a {
+		position: relative;
+
+		&:after {
+			.square(0);
+			border: @secondary-nav-arrow-width solid transparent;
+			border-bottom-width: 0;
+			border-top-color: @secondary-navbar-bg;
+			bottom: -@secondary-nav-arrow-width;
+			content: "";
+			margin-left: -@secondary-nav-arrow-width;
+			position: absolute;
+			left: 50%;
+		}
+	}
+}
+
+
+
+// List
+// ------------------------------
+
+.items-list {
+	th {
+		color: @gray-light;
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+}
+
+
+
+// Buttons
+// ------------------------------
+
+.btn-default {
+	#gradient .vertical(#fefefe, #f3f3f3);
+	border-color: #ddd #ccc #bbb;
+
+	&:hover,
+	&:focus {
+		#gradient .vertical(#fff, #f9f9f9);
+		border-color: #ccc #bbb #aaa;
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	&:active,
+	&.active {
+		background: #eee;
+		border-color: #bbb #ccc #ddd;
+		box-shadow: inset 0 1px 2px rgba(0,0,0,.125);
+	}
+}
+
+
+
+
+// Modals
+// ------------------------------
+
+.modal-content {
+	box-shadow: 0 3px 15px -1px rgba(0,0,0,.25);
+	padding: @modal-inner-padding * 2;
+}
+.modal-header {
+	padding: 0 0 @modal-inner-padding;
+}
+.modal-body {
+	padding: @modal-inner-padding 0;
+}
+.modal-footer {
+	margin-top: 0;
+	padding: @modal-inner-padding 0 0;
+}
+
+
+// Forms
+// ------------------------------
+
+.field {
+	.transition( ~"border 200ms linear, box-shadow 200ms linear" );
+	border: 1px solid #ccc;
+	border-color: #bbb #ccc #ddd;
+
+	&:focus {
+		border-color: darken(@app-primary, 20%) @app-primary lighten(@app-primary, 20%);
+		box-shadow: 0 1px 2px #ddd inset, 0 0 0 3px fade(@app-primary, 10%);
+	}
+}
+.select-field {
+	position: relative;
+
+	// apply default field styles
+	> select {
+		.field();
+		background: transparent;
+		color: @text-color;
+		font-size: @ui-fontsize;
+		font-family: @font-family-base;
+		line-height: @line-height-base;
+		width: 100%;
+		-webkit-appearance: none;
+		   -moz-appearance: none;
+				appearance: none;
+	}
+	
+	// replicate the dropdown arrows
+	&:before,
+	&:after {
+		.border-right-radius(@border-radius);
+		bottom: 1px;
+		content: '';
+		display: inline-block;
+		right: 1px;
+		top: 1px;
+		position: absolute;
+		pointer-events: none;
+	}
+
+	// hide the default arrow UI
+	&:before {
+		#gradient .vertical(#fefefe, #f3f3f3);
+		border-left: 1px solid @input-border-color;
+		width: 1.5em;
+	}
+	// add the arrow back
+	&:after {
+		.square(0);
+		.translate(-50%,-50%);
+		border: 4px solid transparent;
+		border-top-color: @text-color;
+		border-bottom-width: 0;
+		right: 4px;
+		text-align: center;
+		top: 50%;
+	}
+}
+
+
+// Footer
+// ------------------------------
+
+
+.site-footer {
+	border-top: 1px solid @line-color;
+	color: @gray-light;
+	margin-top: 10em;
+	padding-bottom: 2em;
+	padding-top: 2em;
+
+	a {
+		color: @gray;
+	}
+}
+
+
+
+
+
+

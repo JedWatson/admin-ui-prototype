@@ -1,0 +1,101 @@
+//
+// Layout
+// ==============================
+
+
+
+// Base
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	max-width: @screen-md-max;
+}
+
+
+
+
+// Navigation
+// ------------------------------
+
+
+// Common
+
+.site-nav {
+	.container();
+	.clearfix();
+	list-style: none;
+	margin-bottom: 0;
+	margin-top: 0;
+
+	> li {
+		float: left;
+
+		&.right {
+			float: right;
+		}
+	}
+	> li > a {
+		display: block;
+		text-decoration: none;
+	}
+}
+
+
+// Primary
+
+.primary-navbar {
+	background-color: @primary-navbar-bg;
+
+	li > a {
+		color: @primary-navbar-color;
+		padding: @primary-navbar-padding-vertical @primary-navbar-padding-horizontal;
+
+		&:hover {
+			background-color: @primary-navbar-hover-bg;
+			color: @primary-navbar-hover-color;
+		}
+	}
+	.active > a {
+		&, &:hover {
+			background-color: @primary-navbar-active-bg;
+			color: @primary-navbar-active-color;
+		}
+	}
+}
+
+
+// Secondary
+
+.secondary-navbar {
+	background-color: @secondary-navbar-bg;
+
+	li > a {
+		color: @secondary-navbar-color;
+		padding: @secondary-navbar-padding-vertical @secondary-navbar-padding-horizontal;
+
+		&:hover {
+			color: @secondary-navbar-hover-color;
+		}
+	}
+	.active > a {
+		&, &:hover {
+			background-color: @secondary-navbar-active-bg;
+			color: @secondary-navbar-active-color;
+		}
+	}
+}
+
+
+// Body
+
+.site-body {
+	padding-top: 2em;
+}
